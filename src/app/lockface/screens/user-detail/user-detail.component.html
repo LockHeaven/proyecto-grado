@@ -1,0 +1,29 @@
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="center"
+    fxLayoutGap="20px">
+    <div fxFlex="30">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title> {{character.nombre}} </mat-card-title>
+                <mat-card-subtitle> Type User: {{character.tipoUser}} </mat-card-subtitle>
+            </mat-card-header>
+        
+            <img mat-card-image [src]="character.img" alt="Soufiane FADIL">
+        
+            <mat-card-content>
+                <h3>Parentesco : {{character.parentesco}}</h3>
+                <div class="example-form">
+                    <mat-slide-toggle color="warn">¿Habilitar Admin?</mat-slide-toggle>
+                    <mat-slide-toggle color="warn">¿Habilitar acceso a casa?</mat-slide-toggle>
+                </div>
+            </mat-card-content>
+        
+            <mat-card-actions style="margin-top: 20px;">
+                <button mat-raised-button color="primary">Guardar</button>
+            </mat-card-actions>
+        
+        </mat-card>
+    </div>
+    <div fxFlex="60">
+        <app-widget-column [data]="bigChart"></app-widget-column>
+    </div>
+</div>
