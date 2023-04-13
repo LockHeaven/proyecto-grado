@@ -9,6 +9,8 @@ import { RouterModule } from '@angular/router';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { DinamicPasswordComponent } from './dinamic-password/dinamic-password.component';
 import { TemporalPasswordComponent } from './temporal-password/temporal-password.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UsersFormComponent } from './users/users-form/users-form.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +19,14 @@ import { TemporalPasswordComponent } from './temporal-password/temporal-password
     ScreensComponent, 
     UserDetailComponent, 
     DinamicPasswordComponent, 
-    TemporalPasswordComponent,
+    TemporalPasswordComponent, UsersFormComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class ScreensModule { }

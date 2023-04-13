@@ -1,0 +1,5 @@
+<form class="login" [formGroup]="miFormulario" (ngSubmit)="login()">
+    <input type="text" placeholder="Username" formControlName="username">
+    <input type="password" placeholder="Password" formControlName="password">
+    <button type="submit" [disabled]="miFormulario.invalid">Login</button>
+</form>

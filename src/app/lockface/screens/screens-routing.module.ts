@@ -8,26 +8,42 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { DinamicPasswordComponent } from './dinamic-password/dinamic-password.component';
 import { TemporalPasswordComponent } from './temporal-password/temporal-password.component';
 
-
-const routes:Routes=[
-  {path:'dashboard', component:ScreensComponent,
-  children:[
-    {path: '', component: DashboardComponent, data: {titulo:'Dashboard'}}, 
-    {path: 'users', component: UsersComponent, data: {titulo:'Usuarios'}},
-    {path: 'users/:id', component: UserDetailComponent},
-    {path: 'dinamic-password', component: DinamicPasswordComponent, data: {titulo:'Usuarios'}},
-    {path: 'temporal-password', component: TemporalPasswordComponent, data: {titulo:'Usuarios'}},
-  ]
-}
-]
-
+const routes: Routes = [
+  {
+    path: '',
+    component: ScreensComponent,
+    children: [
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+        data: { titulo: 'Dashboard' },
+      },
+      {
+        path: 'users',
+        component: UsersComponent,
+        data: { titulo: 'Usuarios' },
+      },
+      { path: 'users/:id', component: UserDetailComponent },
+      {
+        path: 'dinamic-password',
+        component: DinamicPasswordComponent,
+        data: { titulo: 'Usuarios' },
+      },
+      {
+        path: 'temporal-password',
+        component: TemporalPasswordComponent,
+        data: { titulo: 'Usuarios' },
+      },
+      {
+        path: '**',
+        redirectTo: 'dashboard',
+      },
+    ],
+  },
+];
 
 @NgModule({
- 
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes)
-  ],
-  exports:[RouterModule]
+  imports: [CommonModule, RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class ScreensRoutingModule { }
+export class ScreensRoutingModule {}

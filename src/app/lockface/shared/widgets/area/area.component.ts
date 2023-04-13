@@ -12,29 +12,17 @@ export class AreaComponent implements OnInit {
   @Input() data: any = [];
 
   Highcharts = Highcharts;
-
+  arrayLastWeek: any[] = [];
   constructor() {}
 
   ngOnInit() {
+    this.lastWeek();
     this.chartOptions = {
       chart: {
         type: 'area',
       },
       xAxis: {
-        categories: [
-          'Jan',
-          'Feb',
-          'Mar',
-          'Apr',
-          'May',
-          'Jun',
-          'Jul',
-          'Aug',
-          'Sep',
-          'Oct',
-          'Nov',
-          'Dec',
-        ],
+        categories: [...this.arrayLastWeek],
       },
       title: {
         text: 'Visitas en el Año',
@@ -60,5 +48,22 @@ export class AreaComponent implements OnInit {
     setTimeout(() => {
       window.dispatchEvent(new Event('resize'));
     }, 300);
+  }
+
+  lastWeek(): void {
+    let fechaArray;
+    for (let i = 6; i >= 0; i--) {
+      if (i === 0) {
+        this.arrayLastWeek.push('Today');
+        break;
+      }
+      const fecha = new Date();
+      fechaArray = new Date(
+        fecha.setDate(fecha.getDate() - i)
+      ).toLocaleDateString();
+      this.arrayLastWeek.push(fechaArray);
+    }
+
+    console.log(this.arrayLastWeek);
   }
 }

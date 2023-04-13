@@ -25,7 +25,7 @@ export class PieComponent implements OnInit {
         type: 'pie'
       },
       title: {
-        text: 'Porcentaje Visitas'
+        text: 'Porcentaje Visitas Ultima Semana'
       },
       tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'

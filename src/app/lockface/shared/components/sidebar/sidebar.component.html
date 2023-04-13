@@ -1,27 +1,27 @@
 <mat-nav-list>
     <div class="profile-card">
         <div class="header">
-            <h2>Usuario FaceLock</h2>
-            <h4>example@email.com</h4>
+            <h2>Usuario {{ user.nickname }}</h2>
+            <h4>{{ user.nombre }} {{ user.apellido }}</h4>
         </div>
-        <img src="https://image.ondacero.es/clipping/cmsimages01/2021/12/14/4A650856-AD8E-43BE-A6AB-B21A89426CB1/98.jpg?crop=3000,1688,x0,y161&width=1900&height=1069&optimize=high&format=webply" alt="Soufiane FADIL">
+        <img [src]="urlImg" alt="Soufiane FADIL">
     </div>
 
     <mat-divider></mat-divider>
 
     <h2 matSubheader>Pages</h2>
 
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="">
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/home">
         <mat-icon>dashboard</mat-icon>
         Dashboard
     </a>
 
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="users">
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/home/users">
         <mat-icon>people</mat-icon>
         Users
     </a>
     
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="dinamic-password">
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/home/dinamic-password">
         <mat-icon>lock_open</mat-icon>
         Clave Dinamica
     </a>
@@ -30,7 +30,7 @@
 
     <h2 matSubheader>Tools</h2>
 
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="temporal-password">
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/home/temporal-password">
         <mat-icon>lock</mat-icon>
         Clave Temporal
     </a>

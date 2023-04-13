@@ -1,19 +1,37 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
+import { DashboardService } from '../../services/dashboard.service';
+import { UsersFormComponent } from './users-form/users-form.component';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  styleUrls: ['./users.component.scss'],
 })
-export class UsersComponent {
+export class UsersComponent implements OnInit {
+  constructor(
+    private dashboardService: DashboardService,
+    private dialog: MatDialog
+  ) {}
+  users$!: Observable<any[]>;
 
-  character = {
-    id: 1,
-    nombre: 'Spiderman',
-    tipoUser: 'Admin',
-    parentesco: 'Padre',
-    img: 'https://image.ondacero.es/clipping/cmsimages01/2021/12/14/4A650856-AD8E-43BE-A6AB-B21A89426CB1/98.jpg?crop=3000,1688,x0,y161&width=1900&height=1069&optimize=high&format=webply'
-  };
+  ngOnInit(): void {
+    this.getUsers();
+  }
 
+  getUsers(): void {
+    this.users$ = this.dashboardService.getUsers();
+  }
 
+  addUser(): void {
+    this.dialog
+      .open(UsersFormComponent, {
+        disableClose: true
+      })
+      .afterClosed()
+      .subscribe(() => {
+        this.getUsers();
+      });
+  }
 }

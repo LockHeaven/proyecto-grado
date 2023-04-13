@@ -6,6 +6,7 @@ import { WidgetsModule } from './widgets/widgets.module';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
 
@@ -20,6 +21,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
     WidgetsModule,
     FlexLayoutModule,
     HighchartsChartModule,
+    SweetAlert2Module,
   ]
 })
 export class SharedModule { }

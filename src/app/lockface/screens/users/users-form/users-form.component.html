@@ -1,0 +1,89 @@
+<h3 mat-dialog-title>Registro de Usuarios</h3>
+<div mat-dialog-content>
+  <form
+    [formGroup]="userForm"
+    *ngIf="!loading; else loadingTemplate"
+    class="p-2"
+  >
+    <div class="row">
+      <mat-form-field class="col-md-6 col-sm-12" appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Nombre" #nombre formControlName="nombre" />
+      </mat-form-field>
+      <mat-form-field class="col-md-6 col-sm-12" appearance="outline">
+        <mat-label>Apellido</mat-label>
+        <input
+          matInput
+          placeholder="Apellido"
+          #apellido
+          formControlName="apellido"
+        />
+      </mat-form-field>
+      <mat-form-field class="col-md-6 col-sm-12" appearance="outline">
+        <mat-label>Username</mat-label>
+        <input
+          matInput
+          placeholder="Username"
+          #nickname
+          formControlName="nickname"
+        />
+      </mat-form-field>
+      <mat-form-field class="col-md-6 col-sm-12" appearance="outline">
+        <mat-label>Clave</mat-label>
+        <input matInput placeholder="Clave" #clave formControlName="clave" />
+      </mat-form-field>
+      <mat-form-field class="col-md-6 col-sm-12" appearance="outline">
+        <mat-label>Rol</mat-label>
+        <mat-select formControlName="rol">
+          <mat-option>Clear</mat-option>
+          <mat-option value="ADMIN">Admin</mat-option>
+          <mat-option value="HABITANTE">Habitante</mat-option>
+          <mat-option value="VISITANTE">Visitante</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field
+        class="col-md-6 col-sm-12"
+        appearance="outline"
+        (click)="fileInput.click()"
+      >
+        <mat-label>Imagen</mat-label>
+        <input
+          matInput
+          placeholder="Imagen"
+          #imagen
+          [value]="imagenObj.name"
+          readonly
+        />
+        <input
+          #fileInput
+          type="file"
+          accept="image/jpeg"
+          style="display: none"
+          (change)="addFile($event)"
+        />
+      </mat-form-field>
+      <div>
+        <mat-slide-toggle class="col-12" formControlName="estado" color="warn"
+          >¿Habilitar acceso a casa?</mat-slide-toggle
+        >
+      </div>
+    </div>
+    <div class="actions text-center mt-2"></div>
+  </form>
+  <ng-template #loadingTemplate>
+    <div class="spinner">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
+</div>
+<div mat-dialog-actions *ngIf="!loading" class="justify-content-center">
+  <button mat-raised-button color="primary" (click)="save()">Guardar</button>
+  <button
+    mat-raised-button
+    color="default"
+    (click)="Cancel()"
+  >
+    Cancelar
+  </button>
+</div>
